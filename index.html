@@ -1,0 +1,15 @@
+<!-- Try to open the app via custom URL scheme, otherwise open the web fallback -->
+<a id="openSnap" href="https://web.snapchat.com/">Open Snapchat</a>
+
+<script>
+document.getElementById('openSnap').addEventListener('click', function(e){
+  // On iOS this will attempt to open the app first (snapchat://), fallback after 500ms to web.
+  e.preventDefault();
+  const appUrl = 'snapchat://app';
+  const webUrl = 'https://web.snapchat.com/';
+  // Try to open app
+  window.location = appUrl;
+  // If app doesn't open, browser stays on page — fallback to web after short delay
+  setTimeout(()=> window.location = webUrl, 600);
+});
+</script>
